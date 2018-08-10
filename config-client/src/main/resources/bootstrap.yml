@@ -1,0 +1,32 @@
+server:
+  port: 9967
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      label: master
+      profile: dev
+      uri: http://localhost:9966/
+      discovery:
+        enabled: true
+        service-id: config-server
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: qinhs
+    password: 123456
+# 指定服务注册地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9876/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
